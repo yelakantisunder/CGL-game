@@ -7,42 +7,41 @@
  *
  */
 
-public class Board
-{
-	public boolean[][] createBoard(int n, int l[][])
-	{
-        boolean[][] board = new boolean[n][n];
-        
-	for (int i = 0; i < l.length; i++)
-	{
-            int row = l[i][0];
-            int col = l[i][1];
-            board[row][col] = true;
-    }
-        
-	System.out.println("CurrentGenration");
-        
-	printBoard(board);
-        
-	System.out.println("NextGenration");
-        
-	return board;
-    }
+public class Board {
+	boolean[][] board;int size;int[][]liveCells;
+	public Board(int n, int[][] l) {
+		// TODO Auto-generated constructor stub
+		boolean[][] board = new boolean[n][n];
+		
+		for (int i = 0; i < l.length; i++) {
+			int row = l[i][0];
+			int col = l[i][1];
+			board[row][col] = true;
+		}
+		this.board=board;
+		this.size=n;
+		this.liveCells = l;
+	}
 
-    public void printBoard(boolean board[][]) 
-    {
+	
+	public String toString() {
         StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < board.length; i++) 
-        {
-            for (int j = 0; j < board.length; j++) 
-            {
-                if (board[i][j])
+        for (int i = 0; i < this.size; i++) {
+            for (int j = 0; j < this.size; j++) {
+                if (this.board[i][j])
                     sb.append("*");
                 else
                     sb.append(".");
             }
-            sb.append("\n");
+            if(i== this.size-1) {
+            break;
+            }
+            else {
+            	sb.append("\n");
+            }
         }
-        System.out.print(sb.toString());
+        
+		return sb.toString() ;
     }
+
 }
