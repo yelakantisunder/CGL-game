@@ -54,10 +54,29 @@ public class Board {
 	            int a=l[i][0],b=l[i][1];
 	            s[a][b]=true;
 	        }
-	        System.out.println("CurrentGenration");
+	        System.out.println("CurrentGeneration");
 	        printBoard(s);
-	        System.out.println("NextGenration");
+	        System.out.println("NextGeneration");
 	        printBoard(c.nextgen(s));
+	        System.out.println("CurrentGenration");
+	        printBoard(s); // prints current generation.  
+	       
+	        for(int i=0;i<5;i++) // this loop is used to print five generations.
+	        {
+	        int count=0;
+	        for(int k=0;k<size;k++) // checks whether the board is existed or not.
+	        {
+	        for(int j=0;j<size;j++)
+	        if(s[k][j]==true)
+	        count=1;
+	        }
+	        if(count==0)
+	        break;
+	        System.out.println("NextGenration");
+	        s=c.nextgen(s);
+	        printBoard(s); // prints next generation.
+	        }
+	
 	       
 	return true;
 	}
